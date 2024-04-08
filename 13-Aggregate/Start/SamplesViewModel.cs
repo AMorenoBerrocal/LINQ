@@ -12,8 +12,8 @@
       // Load all Product Data
       List<Product> products = ProductRepository.GetAll();
 
-      // Write Query Syntax Here
-      
+            // Write Query Syntax Here
+            value = (from prod in products select prod).Count();
 
       return value;
     }
@@ -30,7 +30,7 @@
       List<Product> products = ProductRepository.GetAll();
 
       // Write Method Syntax Here
-      
+      value = products.Count();
 
       return value;
     }
