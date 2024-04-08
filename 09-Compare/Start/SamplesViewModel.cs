@@ -15,8 +15,9 @@
       // Create a list of numbers
       List<int> list2 = new() { 1, 2, 3, 4, 5 };
 
-      // Write Query Syntax Here
-      
+            // Write Query Syntax Here
+            value = (from num in list1 select num)
+                      .SequenceEqual(list2);
 
       return value;
     }
