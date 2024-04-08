@@ -13,9 +13,10 @@ namespace LINQSamples
       List<Product> products = GetProducts();
       List<Product> list = new();
 
-      // Write Query Syntax Here
+            // Write Query Syntax Here
 
-
+            list = (from prod in products select prod).ToList();  
+            //list = products.Select(prod -> prod).ToList();
       return list;
     }
     #endregion
