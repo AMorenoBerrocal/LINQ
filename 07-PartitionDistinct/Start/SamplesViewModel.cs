@@ -11,8 +11,8 @@
       List<Product> products = GetProducts();
       List<Product> list = new();
 
-      // Write Query Syntax Here
-      
+            // Write Query Syntax Here
+            list = (from prod in products orderby prod.Name select prod).Take(5).ToList();
 
       return list;
     }
@@ -28,7 +28,7 @@
       List<Product> list = new();
 
       // Write Query Syntax Here
-     
+     list = products.Take(5).ToList();
 
       return list;
     }
@@ -44,7 +44,7 @@
       List<Product> list = new();
 
       // Write Query Syntax Here
-
+      list = (from prod in products select prod).Take(5..).ToList();
      
       return list;
     }
@@ -59,8 +59,8 @@
       List<Product> products = GetProducts();
       List<Product> list = new();
 
-      // Write Query Syntax Here
-      
+            // Write Query Syntax Here
+            list = products.Take(5..).ToList();
 
       return list;
     }
@@ -75,8 +75,8 @@
       List<Product> products = GetProducts();
       List<Product> list = new();
 
-      // Write Query Syntax Here
-      
+            // Write Query Syntax Here
+            list = (from prod in products orderby prod.Name select prod).TakeWhile(p => p.Name.StartsWith("A")).ToList();
 
       return list;
     }
@@ -91,8 +91,8 @@
       List<Product> products = GetProducts();
       List<Product> list = new();
 
-      // Write Method Syntax Here
-     
+            // Write Method Syntax Here
+            list = products.OrderBy(prod => prod.Name).TakeWhile(p => p.Name.StartsWith("A")).ToList();
 
       return list;
     }
@@ -107,8 +107,8 @@
       List<Product> products = GetProducts();
       List<Product> list = new();
 
-      // Write Query Syntax Here
-      
+            // Write Query Syntax Here
+            list = (from prod in products orderby prod.Name select prod).Skip(30).ToList();
 
       return list;
     }
@@ -123,8 +123,8 @@
       List<Product> products = GetProducts();
       List<Product> list = new();
 
-      // Write Method Syntax Here
-      
+            // Write Method Syntax Here
+            list = products.Skip(5).ToList(); 
 
       return list;
     }
@@ -139,8 +139,8 @@
       List<Product> products = GetProducts();
       List<Product> list = new();
 
-      // Write Query Syntax Here
-      
+            // Write Query Syntax Here
+            list = (from prod in products orderby prod.Name select prod).SkipWhile(prod => prod.Name.StartsWith("A")).ToList();
 
       return list;
     }
@@ -172,8 +172,8 @@
       List<Product> products = GetProducts();
       List<string> list = new();
 
-      // Write Query Syntax Here
-      
+            // Write Query Syntax Here
+            list = (from prod in products select prod.Color).Distinct().OrderBy(c => c).ToList();
 
       return list;
     }
@@ -203,7 +203,7 @@
       List<Product> list = new();
 
       // Write Query Syntax Here
-
+      list = (from prod in products select prod).DistinctBy(p => p.Color).ToList();
 
       return list;
     }
@@ -232,7 +232,7 @@
       List<Product[]> list = new();
 
       // Write Query Syntax Here
-      
+      list = (from prod in products select prod).Chunk(5).ToList();
 
       return list;
     }
