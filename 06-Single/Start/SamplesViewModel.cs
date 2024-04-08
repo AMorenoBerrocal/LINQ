@@ -247,20 +247,21 @@
       List<Product> products = GetProducts();
       Product value = null;
 
-      // Write Query Syntax Here
+            // Write Query Syntax Here
+            value = (from prod in products select prod)
+                            .SingleOrDefault(prod => prod.ProductID == 706);
+
+            // Test the exception handling for finding multiple values
 
 
-      // Test the exception handling for finding multiple values
+            // Test the exception handling for the list is empty
+
+            // Test the exception handling for the list is empty and a default value is supplied
+
+            // Test the exception handling for the list is null
 
 
-      // Test the exception handling for the list is empty
-
-      // Test the exception handling for the list is empty and a default value is supplied
-
-      // Test the exception handling for the list is null
-     
-
-      return value;
+            return value;
     }
     #endregion
 
@@ -275,8 +276,8 @@
       List<Product> products = GetProducts();
       Product value = null;
 
-      // Write Method Syntax Here
-      
+            // Write Method Syntax Here
+            value = products.SingleOrDefault(prod => prod.ProductID == 706);
 
       return value;
     }
