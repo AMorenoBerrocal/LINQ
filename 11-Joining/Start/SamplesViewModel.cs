@@ -15,9 +15,23 @@
       // Load all Sales Order Data
       List<SalesOrder> sales = SalesOrderRepository.GetAll();
 
-      // Write Query Syntax Here
+            // Write Query Syntax Here
+            list = (from prod in products join sale in sales on prod.ProductID equals sale.ProductID
+                    select new ProductOrder
+                    {
+                        ProductID = prod.ProductID,
+                        Name = prod.Name,
+                        Color = prod.Color,
+                        StandardCost = prod.StandardCost,
+                        ListPrice = prod.ListPrice,
+                        Size = prod.Size,
+                        SalesOrderID = sale.SalesOrderID,
+                        OrderQty = sale.OrderQty,
+                        UnitPrice = sale.UnitPrice,
+                        LineTotal = sale.LineTotal
+                    }).OrderBy(p => p.Name).ToList();
 
-
+                
       return list;
     }
     #endregion
@@ -54,12 +68,29 @@
       // Load all Sales Order Data
       List<SalesOrder> sales = SalesOrderRepository.GetAll();
 
-      // Write Query Syntax Here
+            // Write Query Syntax Here
+            list = (from prod in products
+                    join sale in sales on 
+                        new {prod.ProductID, Qty = (short)6}
+                        equals
+                        new {sale.ProductID, Qty = sale.OrderQty}
+                    select new ProductOrder
+                    {
+                        ProductID = prod.ProductID,
+                        Name = prod.Name,
+                        Color = prod.Color,
+                        StandardCost = prod.StandardCost,
+                        ListPrice = prod.ListPrice,
+                        Size = prod.Size,
+                        SalesOrderID = sale.SalesOrderID,
+                        OrderQty = sale.OrderQty,
+                        UnitPrice = sale.UnitPrice,
+                        LineTotal = sale.LineTotal
+                    }).OrderBy(p => p.Name).ToList();
 
-
-      return list;
+            return list;
     }
-    #endregion
+     #endregion
 
     #region InnerJoinTwoFieldsMethod
     /// <summary>
