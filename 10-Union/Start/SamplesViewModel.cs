@@ -58,8 +58,9 @@
       // Load all Product Data
       List<Product> list2 = ProductRepository.GetAll();
 
-      // Write Query Syntax Here
-     
+            // Write Query Syntax Here
+            list = (from prod in list1 select prod)
+                       .Union(list2, pc).ToList();
 
       return list;
     }
@@ -79,8 +80,8 @@
       // Load all Product Data
       List<Product> list2 = ProductRepository.GetAll();
 
-      // Write Method Syntax Here
-      
+            // Write Method Syntax Here
+            list = list1.Union(list2, pc).ToList();
 
       return list;
     }
