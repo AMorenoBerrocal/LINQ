@@ -232,7 +232,7 @@
       List<Product[]> list = new();
 
       // Write Query Syntax Here
-      
+      list = (from prod in products select prod).Chunk(5).ToList();
 
       return list;
     }
