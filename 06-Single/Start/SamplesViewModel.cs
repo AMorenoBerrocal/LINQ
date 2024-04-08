@@ -1,4 +1,4 @@
-﻿namespace LINQSamples
+﻿ namespace LINQSamples
 {
   public class SamplesViewModel : ViewModelBase
   {
@@ -14,7 +14,9 @@
       List<Product> products = GetProducts();
       Product value = null;
 
-      // Write Query Syntax Here
+            // Write Query Syntax Here
+            value = (from prod in products select prod)
+                      .First(prod => prod.Color == "Red");
 
       // Test the exception handling
 
@@ -34,8 +36,9 @@
       List<Product> products = GetProducts();
       Product value = null;
 
-      // Write Method Syntax Here
-      
+            // Write Method Syntax Here
+            value = products.First(p => p.Color == "Red");
+
       return value;
     }
     #endregion
