@@ -118,18 +118,30 @@ namespace LINQSamples
       List<Product> products = GetProducts();
       StringBuilder sb = new(2048);
 
-      // Write Query Syntax Here
+            // Write Query Syntax Here
+            var list = (from prod in products
+                        select new
+                        {
+                            Identifier = prod.ProductID,
+                            ProductName = prod.Name,
+                            ProductSize = prod.Size
+                        });
       
+            foreach(var prod in list)
+            {
+                sb.AppendLine($"Product ID: {prod.Identifier}");
+                sb.AppendLine($"    Product Name: {prod.ProductName}");
+                sb.AppendLine($"    Product Size: {prod.ProductSize}");
+            }
+            // Loop through anonymous class
+            //foreach (var prod in list)
+            //{
+            //  sb.AppendLine($"Product ID: {prod.Identifier}");
+            //  sb.AppendLine($"   Product Name: {prod.ProductName}");
+            //  sb.AppendLine($"   Product Size: {prod.ProductSize}");
+            //}
 
-      // Loop through anonymous class
-      //foreach (var prod in list)
-      //{
-      //  sb.AppendLine($"Product ID: {prod.Identifier}");
-      //  sb.AppendLine($"   Product Name: {prod.ProductName}");
-      //  sb.AppendLine($"   Product Size: {prod.ProductSize}");
-      //}
-
-      return sb.ToString();
+            return sb.ToString();
     }
     #endregion
 
