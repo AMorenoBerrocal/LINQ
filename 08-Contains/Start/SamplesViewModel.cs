@@ -11,8 +11,9 @@
       List<Product> products = GetProducts();
       bool value = false;
 
-      // Write Query Syntax Here
-      
+            // Write Query Syntax Here
+            value = (from prod in products select prod)
+                      .All(prod => prod.ListPrice > prod.StandardCost);
 
       return value;
     }
@@ -27,8 +28,8 @@
       List<Product> products = GetProducts();
       bool value = false;
 
-      // Write Method Syntax Here
-      
+            // Write Method Syntax Here
+            value = products.All(prod => prod.ListPrice > prod.StandardCost);
 
       return value;
     }
@@ -43,8 +44,9 @@
       List<SalesOrder> sales = GetSales();
       bool value = false;
 
-      // Write Query Syntax Here
-      
+            // Write Query Syntax Here
+            value = (from sale in sales select sale)
+                      .Any(sale => sale.LineTotal > 10000);
 
       return value;
     }
@@ -59,8 +61,8 @@
       List<SalesOrder> sales = GetSales();
       bool value = false;
 
-      // Write Method Syntax Here
-      
+            // Write Method Syntax Here
+            value = sales.Any(sale => sale.LineTotal > 100000);
 
       return value;
     }
@@ -107,8 +109,8 @@
       List<int> numbers = new() { 1, 2, 3, 4, 5 };
       bool value = false;
 
-      // Write Query Syntax Here
-      
+            // Write Query Syntax Here
+            value = (from num in numbers select num).Contains(3);
 
       return value;
     }
@@ -124,7 +126,7 @@
       bool value = false;
 
       // Write Method Syntax Here
-      
+      value = numbers.Contains(3);
 
       return value;
     }
