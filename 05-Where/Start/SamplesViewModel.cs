@@ -78,7 +78,8 @@
       List<Product> products = GetProducts();
       List<Product> list = new();
 
-      // Write Query Syntax Here
+            // Write Query Syntax Here
+            list = (from prod in products select prod).ByColor("Red").ToList();
 
       return list;
     }
@@ -93,8 +94,8 @@
       List<Product> products = GetProducts();
       List<Product> list = new();
 
-      // Write Method Syntax Here
-
+            // Write Method Syntax Here
+            list = products.ByColor("Red").ToList();
 
       return list;
     }
