@@ -118,10 +118,10 @@
       List<Product> list2 = ProductRepository.GetAll();
 
       // Remove an element from 'list1' to make the collections different
-      //list1.RemoveAt(0);
+      list1.RemoveAt(0);
 
-      // Write Query Syntax Here
-      
+            // Write Query Syntax Here
+            value = list1.SequenceEqual(list2, pc);
 
       return value;
     }
@@ -141,10 +141,11 @@
       List<Product> list2 = ProductRepository.GetAll();
 
       // Remove an element from 'list1' to make the collections different
-      //list1.RemoveAt(0);
+      list1.RemoveAt(0);
 
-      // Write Method Syntax Here
-      
+            // Write Method Syntax Here
+            value = (from prod in list1 select prod)
+                      .SequenceEqual(list2, pc);
 
       return value;
     }
@@ -239,8 +240,9 @@
       // to give us a difference in the two lists
       list2.RemoveAll(prod => prod.Color == "Black");
 
-      // Write Query Syntax Here
-      
+            // Write Query Syntax Here
+            list = (from prod in list1 select prod)
+                        .Except(list2, pc).ToList();
 
       return list;
     }
