@@ -16,7 +16,9 @@
       List<int> list2 = new() { 1, 2, 3, 4, 5 };
 
       // Write Query Syntax Here
-
+      list = (from num in list1 select num)
+                .Union(list2)
+                .OrderBy(num => num).ToList();
 
       return list;
     }
@@ -35,8 +37,8 @@
       // Create a list of numbers
       List<int> list2 = new() { 1, 2, 3, 4, 5 };
 
-      // Write Query Syntax Here
-     
+            // Write Query Syntax Here
+            list = list1.Union(list2).ToList();
 
       return list;
     }
