@@ -12,8 +12,10 @@
       // Load all Product Data
       List<Product> products = ProductRepository.GetAll();
 
-      // Write Query Syntax Here
-
+            // Write Query Syntax Here
+            list = (from prod in products
+                    orderby prod.Size
+                    group prod by prod.Size).ToList();
       return list;
     }
     #endregion
@@ -29,7 +31,7 @@
       List<Product> products = ProductRepository.GetAll();
 
       // Write Method Syntax Here
-      
+      list = products.OrderBy(p => p.Size).GroupBy(p => p.Size).ToList();
 
       return list;
     }
