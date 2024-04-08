@@ -1,4 +1,4 @@
-﻿namespace LINQSamples
+﻿ namespace LINQSamples
 {
   public class SamplesViewModel : ViewModelBase
   {
@@ -14,7 +14,9 @@
       List<Product> products = GetProducts();
       Product value = null;
 
-      // Write Query Syntax Here
+            // Write Query Syntax Here
+            value = (from prod in products select prod)
+                      .First(prod => prod.Color == "Red");
 
       // Test the exception handling
 
@@ -34,8 +36,9 @@
       List<Product> products = GetProducts();
       Product value = null;
 
-      // Write Method Syntax Here
-      
+            // Write Method Syntax Here
+            value = products.First(p => p.Color == "Red");
+
       return value;
     }
     #endregion
@@ -52,11 +55,12 @@
       List<Product> products = GetProducts();
       Product value = null;
 
-      // Write Query Syntax Here
+            // Write Query Syntax Here
+            value = (from prod in products select prod)
+                            .FirstOrDefault(prod => prod.Color == "Red", new Product { ProductID = -1, Name = "Not FOUND"});
+            // Test the exception handling
 
-      // Test the exception handling
-
-      return value;
+            return value;
     }
     #endregion
 
@@ -72,8 +76,8 @@
       List<Product> products = GetProducts();
       Product value = null;
 
-      // Write Method Syntax Here
-
+            // Write Method Syntax Here
+            value = products.FirstOrDefault(prod => prod.Color == "Red");
       return value;
     }
     #endregion
@@ -126,11 +130,13 @@
       List<Product> products = GetProducts();
       Product value = null;
 
-      // Write Query Syntax Here
-      
-      // Test the exception handling
-      
-      return value;
+            // Write Query Syntax Here
+            value = (from prod in products select prod)
+                      .Last(prod => prod.Color == "Red");
+            // Test the exception handling
+            value = (from prod in products select prod)
+                            .Last(prod => prod.Color == "Purple");
+            return value;
     }
     #endregion
 
@@ -144,8 +150,8 @@
       List<Product> products = GetProducts();
       Product value = null;
 
-      // Write Method Syntax Here
-      
+            // Write Method Syntax Here
+            value = products.Last(prod => prod.Color == "Red");
 
       return value;
     }
@@ -161,12 +167,15 @@
       List<Product> products = GetProducts();
       Product value = null;
 
-      // Write Query Syntax Here
-     
+            // Write Query Syntax Here
+            value = (from prod in products select prod)
+                             .LastOrDefault(prod => prod.Color == "Red");
 
-      // Test the exception handling
-     
-      return value;
+            // Test the exception handling
+            value = (from prod in products select prod)
+                             .LastOrDefault(prod => prod.Color == "Purple", new Product { ProductID = -1, Name = "Not FOUND"});
+
+            return value;
     }
     #endregion
 
@@ -198,8 +207,9 @@
       List<Product> products = GetProducts();
       Product value = null;
 
-      // Write Query Syntax Here
-
+            // Write Query Syntax Here
+            value = (from prod in products select prod)
+                      .Single(prod => prod.ProductID == 706);
       // Test the exception handling for finding multiple values
 
       // Test the exception handling for the list is null
@@ -219,7 +229,8 @@
       List<Product> products = GetProducts();
       Product value = null;
 
-      // Write Method Syntax Here
+            // Write Method Syntax Here
+            value = products.Single(prod => prod.ProductID == 706);
 
       return value;
     }
@@ -236,20 +247,21 @@
       List<Product> products = GetProducts();
       Product value = null;
 
-      // Write Query Syntax Here
+            // Write Query Syntax Here
+            value = (from prod in products select prod)
+                            .SingleOrDefault(prod => prod.ProductID == 706);
+
+            // Test the exception handling for finding multiple values
 
 
-      // Test the exception handling for finding multiple values
+            // Test the exception handling for the list is empty
+
+            // Test the exception handling for the list is empty and a default value is supplied
+
+            // Test the exception handling for the list is null
 
 
-      // Test the exception handling for the list is empty
-
-      // Test the exception handling for the list is empty and a default value is supplied
-
-      // Test the exception handling for the list is null
-     
-
-      return value;
+            return value;
     }
     #endregion
 
@@ -264,8 +276,8 @@
       List<Product> products = GetProducts();
       Product value = null;
 
-      // Write Method Syntax Here
-      
+            // Write Method Syntax Here
+            value = products.SingleOrDefault(prod => prod.ProductID == 706);
 
       return value;
     }
