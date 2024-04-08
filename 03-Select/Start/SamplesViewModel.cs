@@ -78,6 +78,14 @@ namespace LINQSamples
       List<Product> products = GetProducts();
       List<Product> list = new();
 
+            list = (from prod in products
+                    select new Product
+                    {
+                        ProductID = prod.ProductID,
+                        Name = prod.Name,
+                        Size = prod.Size
+                    }).ToList();
+
       // Write Query Syntax Here
       
 
