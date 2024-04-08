@@ -150,8 +150,8 @@
       List<Product> products = GetProducts();
       Product value = null;
 
-      // Write Method Syntax Here
-      
+            // Write Method Syntax Here
+            value = products.Last(prod => prod.Color == "Red");
 
       return value;
     }
@@ -167,12 +167,15 @@
       List<Product> products = GetProducts();
       Product value = null;
 
-      // Write Query Syntax Here
-     
+            // Write Query Syntax Here
+            value = (from prod in products select prod)
+                             .LastOrDefault(prod => prod.Color == "Red");
 
-      // Test the exception handling
-     
-      return value;
+            // Test the exception handling
+            value = (from prod in products select prod)
+                             .LastOrDefault(prod => prod.Color == "Purple", new Product { ProductID = -1, Name = "Not FOUND"});
+
+            return value;
     }
     #endregion
 
