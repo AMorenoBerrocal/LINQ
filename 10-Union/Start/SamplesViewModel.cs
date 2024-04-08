@@ -99,8 +99,9 @@
       // Load all Product Data
       List<Product> list2 = ProductRepository.GetAll();
 
-      // Write Query Syntax Here
-      
+            // Write Query Syntax Here
+            list = (from prod in list1 select prod)
+                      .UnionBy(list2, p => p.Color).ToList();
 
       return list;
     }
@@ -139,7 +140,7 @@
       List<int> list2 = new() { 1, 2, 3, 4, 5 };
 
       // Write Query Syntax Here
-      
+      list = (from num in list1 select num).Concat(list2).ToList();
 
       return list;
     }
