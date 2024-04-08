@@ -172,8 +172,8 @@
       List<Product> products = GetProducts();
       List<string> list = new();
 
-      // Write Query Syntax Here
-      
+            // Write Query Syntax Here
+            list = (from prod in products select prod.Color).Distinct().OrderBy(c => c).ToList();
 
       return list;
     }
@@ -203,7 +203,7 @@
       List<Product> list = new();
 
       // Write Query Syntax Here
-
+      list = (from prod in products select prod).DistinctBy(p => p.Color).ToList();
 
       return list;
     }
