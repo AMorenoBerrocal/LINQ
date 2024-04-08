@@ -67,7 +67,8 @@
       // list2 = list1;
 
       // Write Query Syntax Here
-      
+      value = (from prod in list1 select prod)
+                .SequenceEqual(list2);
 
       return value;
     }
@@ -94,7 +95,7 @@
       };
 
       // Make Collections the Same
-      // list2 = list1;
+      list2 = list1;
 
       // Write Method Syntax Here
       
