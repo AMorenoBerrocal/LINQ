@@ -102,7 +102,10 @@
       List<Product> products = ProductRepository.GetAll();
 
       // Write Query Syntax Here
-      
+      list = (from prod in products orderby prod.Size
+              group prod by prod.Size into sizes
+              where sizes.Count() > 2
+              select sizes).ToList();
 
       return list;
     }
