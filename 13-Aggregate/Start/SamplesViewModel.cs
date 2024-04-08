@@ -352,8 +352,6 @@
       List<SalesOrder> sales = SalesOrderRepository.GetAll();
 
       // Write Query Syntax Here
-      
-
       return value;
     }
     #endregion
