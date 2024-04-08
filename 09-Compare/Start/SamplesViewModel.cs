@@ -15,8 +15,9 @@
       // Create a list of numbers
       List<int> list2 = new() { 1, 2, 3, 4, 5 };
 
-      // Write Query Syntax Here
-      
+            // Write Query Syntax Here
+            value = (from num in list1 select num)
+                      .SequenceEqual(list2);
 
       return value;
     }
@@ -66,7 +67,8 @@
       // list2 = list1;
 
       // Write Query Syntax Here
-      
+      value = (from prod in list1 select prod)
+                .SequenceEqual(list2);
 
       return value;
     }
@@ -93,7 +95,7 @@
       };
 
       // Make Collections the Same
-      // list2 = list1;
+      list2 = list1;
 
       // Write Method Syntax Here
       
@@ -116,10 +118,10 @@
       List<Product> list2 = ProductRepository.GetAll();
 
       // Remove an element from 'list1' to make the collections different
-      //list1.RemoveAt(0);
+      list1.RemoveAt(0);
 
-      // Write Query Syntax Here
-      
+            // Write Query Syntax Here
+            value = list1.SequenceEqual(list2, pc);
 
       return value;
     }
@@ -139,10 +141,11 @@
       List<Product> list2 = ProductRepository.GetAll();
 
       // Remove an element from 'list1' to make the collections different
-      //list1.RemoveAt(0);
+      list1.RemoveAt(0);
 
-      // Write Method Syntax Here
-      
+            // Write Method Syntax Here
+            value = (from prod in list1 select prod)
+                      .SequenceEqual(list2, pc);
 
       return value;
     }
@@ -237,8 +240,9 @@
       // to give us a difference in the two lists
       list2.RemoveAll(prod => prod.Color == "Black");
 
-      // Write Query Syntax Here
-      
+            // Write Query Syntax Here
+            list = (from prod in list1 select prod)
+                        .Except(list2, pc).ToList();
 
       return list;
     }
@@ -282,8 +286,9 @@
       // The list of colors to exclude from the list
       List<string> colors = new() { "Red", "Black" };
 
-      // Write Query Syntax Here
-      
+            // Write Query Syntax Here
+            list = (from prod in products select prod)
+                      .ExceptBy(colors, p => p.Color).ToList();
 
       return list;
     }
@@ -321,8 +326,10 @@
       List<Product> products = ProductRepository.GetAll();
       List<SalesOrder> sales = SalesOrderRepository.GetAll();
 
-      // Write Query Syntax Here
-      
+            // Write Query Syntax Here
+            list = (from prod in products select prod)
+                      .ExceptBy<Product, int>(from sale in sales select sale.ProductID, prod => prod.ProductID).ToList();
+
 
       return list;
     }
@@ -359,7 +366,8 @@
       List<int> list2 = new() { 3, 4, 5 };
 
       // Write Query Syntax Here
-      
+      list = (from num in list1 select num)
+                .Intersect(list2).ToList();
 
       return list;
     }
@@ -517,9 +525,11 @@
       List<Product> products = ProductRepository.GetAll();
       List<SalesOrder> sales = SalesOrderRepository.GetAll();
 
-      // Write Query Syntax Here
-      
+            List<string> colors = new List<string>() { "Red", "Black" };
 
+            // Write Query Syntax Here
+            list = (from prod in products select prod)
+                .IntersectBy(colors, p => p.Color).ToList();
       return list;
     }
     #endregion
@@ -535,8 +545,8 @@
       List<Product> products = ProductRepository.GetAll();
       List<SalesOrder> sales = SalesOrderRepository.GetAll();
 
-      // Write Method Syntax Here
-
+            // Write Method Syntax Here
+            
 
       return list;
     }
