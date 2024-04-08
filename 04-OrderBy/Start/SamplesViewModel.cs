@@ -10,6 +10,7 @@
     {
       List<Product> products = GetProducts();
       List<Product> list = new();
+            list = (from prod in products orderby prod.Name select prod).ToList();
 
       // Write Query Syntax Here
       
@@ -26,6 +27,7 @@
     {
       List<Product> products = GetProducts();
       List<Product> list = new();
+      list = products.OrderBy(prod => prod.Name).ToList();
 
       // Write Method Syntax Here
      
