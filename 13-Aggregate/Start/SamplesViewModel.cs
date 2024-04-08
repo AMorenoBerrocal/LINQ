@@ -254,8 +254,8 @@
       // Load all Product Data
       List<Product> products = ProductRepository.GetAll();
 
-      // Write Method Syntax #1 Here
-      
+            // Write Method Syntax #1 Here
+            value = products.Average(p => p.ListPrice);
 
       // Write Method Syntax #2 Here
       
