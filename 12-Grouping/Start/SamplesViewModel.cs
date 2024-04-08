@@ -48,7 +48,9 @@
       List<Product> products = ProductRepository.GetAll();
 
       // Write Query Syntax Here
-      
+      list = (from prod in products
+              group prod by prod.Size into sizes
+              orderby sizes.Key select sizes).ToList();
 
       return list;
     }
@@ -65,7 +67,7 @@
       List<Product> products = ProductRepository.GetAll();
 
       // Write Query Syntax Here
-      
+      list = products.GroupBy(p => p.Size).ToList();
 
       return list;
     }
