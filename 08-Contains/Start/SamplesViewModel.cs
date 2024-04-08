@@ -109,8 +109,8 @@
       List<int> numbers = new() { 1, 2, 3, 4, 5 };
       bool value = false;
 
-      // Write Query Syntax Here
-      
+            // Write Query Syntax Here
+            value = (from num in numbers select num).Contains(3);
 
       return value;
     }
@@ -126,7 +126,7 @@
       bool value = false;
 
       // Write Method Syntax Here
-      
+      value = numbers.Contains(3);
 
       return value;
     }
