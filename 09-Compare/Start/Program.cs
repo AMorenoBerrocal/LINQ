@@ -4,7 +4,7 @@
 SamplesViewModel vm = new();
 
 // Call Sample Method
-var result = vm.SequenceEqualObjectsQuery();
+var result = vm.IntersectIntegersQuery();
 
 // Display Results
 vm.Display(result);
