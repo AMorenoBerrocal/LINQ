@@ -207,8 +207,9 @@
       List<Product> products = GetProducts();
       Product value = null;
 
-      // Write Query Syntax Here
-
+            // Write Query Syntax Here
+            value = (from prod in products select prod)
+                      .Single(prod => prod.ProductID == 706);
       // Test the exception handling for finding multiple values
 
       // Test the exception handling for the list is null
@@ -228,7 +229,8 @@
       List<Product> products = GetProducts();
       Product value = null;
 
-      // Write Method Syntax Here
+            // Write Method Syntax Here
+            value = products.Single(prod => prod.ProductID == 706);
 
       return value;
     }
