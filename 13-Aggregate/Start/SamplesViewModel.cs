@@ -166,8 +166,8 @@
       // Load all Product Data
       List<Product> products = ProductRepository.GetAll();
 
-      // Write Query Syntax Here
-      
+            // Write Query Syntax Here
+            product = (from prod in products select prod).MinBy(prod => prod.ListPrice);
 
       return product;
     }
