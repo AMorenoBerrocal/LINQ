@@ -179,10 +179,11 @@
       // Load all Product Data
       List<Product> list2 = ProductRepository.GetAll();
 
-      // Write Query Syntax Here
-      
+       // Write Query Syntax Here
+       list = (from num in list1 select num).Concat(list2).ToList();
 
-      return list;
+
+            return list;
     }
     #endregion
 
