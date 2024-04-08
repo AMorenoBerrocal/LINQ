@@ -12,8 +12,10 @@
       // Load all Product Data
       List<Product> products = ProductRepository.GetAll();
 
-      // Write Query Syntax Here
-
+            // Write Query Syntax Here
+            list = (from prod in products
+                    orderby prod.Size
+                    group prod by prod.Size).ToList();
       return list;
     }
     #endregion
@@ -29,7 +31,7 @@
       List<Product> products = ProductRepository.GetAll();
 
       // Write Method Syntax Here
-      
+      list = products.OrderBy(p => p.Size).GroupBy(p => p.Size).ToList();
 
       return list;
     }
@@ -46,7 +48,9 @@
       List<Product> products = ProductRepository.GetAll();
 
       // Write Query Syntax Here
-      
+      list = (from prod in products
+              group prod by prod.Size into sizes
+              orderby sizes.Key select sizes).ToList();
 
       return list;
     }
@@ -63,7 +67,7 @@
       List<Product> products = ProductRepository.GetAll();
 
       // Write Query Syntax Here
-      
+      list = products.GroupBy(p => p.Size).ToList();
 
       return list;
     }
@@ -98,7 +102,10 @@
       List<Product> products = ProductRepository.GetAll();
 
       // Write Query Syntax Here
-      
+      list = (from prod in products orderby prod.Size
+              group prod by prod.Size into sizes
+              where sizes.Count() > 2
+              select sizes).ToList();
 
       return list;
     }
@@ -171,8 +178,14 @@
       // Load all Product Data
       List<Product> products = ProductRepository.GetAll();
 
-      // Write Query Syntax Here
-      
+            // Write Query Syntax Here
+            list = (from prod in products
+                    orderby prod.Color
+                    group prod by prod.Color
+                    into groupedColors
+                    select groupedColors.FirstOrDefault().Color).ToList();
+
+
       return list;
     }
     #endregion
