@@ -525,9 +525,11 @@
       List<Product> products = ProductRepository.GetAll();
       List<SalesOrder> sales = SalesOrderRepository.GetAll();
 
-      // Write Query Syntax Here
-      
+            List<string> colors = new List<string>() { "Red", "Black" };
 
+            // Write Query Syntax Here
+            list = (from prod in products select prod)
+                .IntersectBy(colors, p => p.Color).ToList();
       return list;
     }
     #endregion
@@ -543,8 +545,8 @@
       List<Product> products = ProductRepository.GetAll();
       List<SalesOrder> sales = SalesOrderRepository.GetAll();
 
-      // Write Method Syntax Here
-
+            // Write Method Syntax Here
+            
 
       return list;
     }
