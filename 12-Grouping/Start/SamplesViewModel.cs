@@ -178,8 +178,14 @@
       // Load all Product Data
       List<Product> products = ProductRepository.GetAll();
 
-      // Write Query Syntax Here
-      
+            // Write Query Syntax Here
+            list = (from prod in products
+                    orderby prod.Color
+                    group prod by prod.Color
+                    into groupedColors
+                    select groupedColors.FirstOrDefault().Color).ToList();
+
+
       return list;
     }
     #endregion
